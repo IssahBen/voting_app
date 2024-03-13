@@ -1,0 +1,22 @@
+<div class = "row">
+    <div class = "col-9">
+        <table class="table   table-dark table-hover ">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% object.each_with_index do |candidate,i| %>
+                    <tr>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td><%= candidate.full_name %></td>
+                    <td>Vote</td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -73,5 +73,7 @@ gem "bootstrap"
 gem "sassc-rails"     
 
  gem "devise-i18n"
- 
-  gem "devise-bootstrap5"
+
+gem "devise-bootstrap5"
+
+gem 'acts_as_votable'
