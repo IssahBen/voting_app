@@ -1,6 +1,6 @@
 class BallotsController < ApplicationController 
     def index 
-        @ballots = Ballot.all
+        @ballots  = current_user.ballots
     end 
 
     def create 
@@ -40,11 +40,14 @@ class BallotsController < ApplicationController
     end
 
     def destroy 
-    
+        @ballot = Ballot.find(params[:id])
+         @ballot.destroy 
+        flash[:notice] = "Ballot has been deleted"
+        redirect_to ballots_pathball
     end 
     private 
     def ballot_params 
-        params.require(:ballot).permit(:name,:description)
+        params.require(:ballot).permit(:name,:description,:user_id)
     end
     
 

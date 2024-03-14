@@ -5,7 +5,7 @@
                 <tr>
                 <th scope="col">#</th>
                 <th scope="col">Full Name</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Ballots</th>
                 </tr>
             </thead>
             <tbody>
@@ -13,12 +13,13 @@
                     <tr>
                     <th scope="row"><%= i + 1 %></th>
                     <td><%= candidate.full_name %></td>
-                    <td><%= link_to vote_path(candidate_id: candidate.id),class: "vote",method: :put do %>
-                            <button type="button" class="btn btn-info" aria-label="Left Align">
-                                <span >Click to Vote</span>
-                                <span class="badge"><%=candidate.get_upvotes.size%></span>
+                    <td>
+                           <button type="button" class="btn btn-info" aria-label="Left Align">
+                                <span class="badge"><% candidate.ballots.each do |ballot|  %>
+                                                    <%= ballot.name%>
+                                                    <% end %>
+                                </span>
                             </button>
-                        <% end %>
                     </td>
                     </tr>
                 <% end %>

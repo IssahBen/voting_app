@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_14_062731) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_14_214550) do
   create_table "ballot_candidates", force: :cascade do |t|
     t.integer "ballot_id", null: false
     t.integer "candidate_id", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_14_062731) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "candidates", force: :cascade do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_14_062731) do
     t.integer "cached_weighted_subscribe_score", default: 0
     t.integer "cached_weighted_subscribe_total", default: 0
     t.float "cached_weighted_subscribe_average", default: 0.0
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

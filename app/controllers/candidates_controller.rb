@@ -2,7 +2,8 @@ class CandidatesController <  ApplicationController
     before_action :set_candidate, only: [:upvote]
 
     def index 
-        @candidates = Candidate.all.order(:cached_scoped_subscribe_votes_up=> :desc)
+        @candidates = current_user.candidates
+        #  Candidate.all.order(:cached_scoped_subscribe_votes_up=> :desc)
 
     end 
 
@@ -18,20 +19,38 @@ class CandidatesController <  ApplicationController
 
     def new 
        @ballot = Ballot.find(params[:ballot_id])
+       @user_candidates = current_user.candidates
     end
 
     def create 
+        byebug
        @ballot = Ballot.find(params[:ballot_id])
-       @candidate = Candidate.new(first_name: params[:first_name],last_name: params[:last_name])
-       if @candidate.save 
-            @ballot.ballot_candidates.build(candidate_id: @candidate.id) 
-            @ballot.save 
+       if params[:user_id]
+            @candidate = Candidate.new(first_name: params[:first_name],last_name: params[:last_name],user_id: params[:user_id])
+            if @candidate.save 
+                @ballot.ballot_candidates.build(candidate_id: @candidate.id) 
+                @ballot.save 
                 flash[:notice] = "Candidate has been added to ballot"
                 redirect_to @ballot   
+            else 
+                flash.now[:alert] = "Candidate couldn't be added"
+                render "new", status: :unprocessable_entity
+            end
         else 
-            flash.now[:alert] = "Candidate couldn't be added"
-            render "new", status: :unprocessable_entity
-        end
+            @candidate = Candidate.find(params[:candidate_id])
+            @ballot = Ballot.find(params[:ballot_id])
+            ballot_candidate = BallotCandidate.new(ballot_id: @ballot.id, candidate_id: @candidate.id)
+            if ballot_candidate.save 
+                flash[:notice] = "Candidate has been added to ballot"
+                redirect_to @ballot   
+            else 
+                flash[:alert] = "Candidate couldn't be added"
+                redirect_to @ballot 
+            end
+        end 
+
+
+
 
     end
     

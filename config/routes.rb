@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :candidates, only: [:create, :new,:edit,:update]
   end
 
-  # resources :candidates,only: [:edit,:update]
+  resources :candidates,only: [:index]
   delete "delete_ballot_candidate",to: "ballot_candidate#destroy"
 end
