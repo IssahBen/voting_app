@@ -1,4 +1,4 @@
-<div class = "container extra_margin" >	
+<div class = "container   extra_margin" >	
 	<div class="row">
 		<div class="col-md-6">
 			<h2 class="pb-4"><%= t('.sign_up') %></h2>
@@ -12,19 +12,24 @@
 			</div>
 
 			<div class="row mb-4">
-			<div class="col">
-			<%= f.label :password, class: "form-label" %>
-			<%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+				<div class="col">
+				<%= f.label :password, class: "form-label" %>
+				<%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
 
-			<% if @minimum_password_length %>
-				<div class="form-text"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></div>
-			<% end %>
-			</div>
+				<% if @minimum_password_length %>
+					<div class="form-text"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></div>
+				<% end %>
+				</div>
 
-			<div class="col">
-			<%= f.label :password_confirmation, class: "form-label" %>
-			<%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+				<div class="col">
+				<%= f.label :password_confirmation, class: "form-label" %>
+				<%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+				</div>
+				
 			</div>
+			<div class="mb-3">
+				<%= f.label :Role, class: "form-label" %>
+				<%= f.select :role, ["Voter","Election Official"],class: 'form-control' %>
 			</div>
 
 			<div class="mb-3">

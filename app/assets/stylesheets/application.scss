@@ -14,3 +14,11 @@
  *= require_self
  */
 @import "bootstrap";
+
+body {
+    background-image: asset_url("happyvoting.jpg")
+}
+
+.jumbotron {
+    opacity: 0.5;
+}

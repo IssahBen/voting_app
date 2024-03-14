@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get "poll" , to: "candidates#index"
 
   put "vote" , to:  "candidates#upvote"
+  get 'user_root' => 'candidates#index'
 end

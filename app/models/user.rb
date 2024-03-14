@@ -4,4 +4,22 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def already_voted 
+    candidates = Candidate.all 
+    candidates.each do |candidate|
+      if self.voted_for? candidate 
+        return true  
+      end 
+    end 
+    false
+  end
+
+  def voter?
+    self.role == "Voter"
+  end 
+  
+  def admin?
+    self.role == "Election Official"
+  end
 end
