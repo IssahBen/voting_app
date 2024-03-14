@@ -9,6 +9,7 @@
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Votes</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -18,6 +19,10 @@
         <td><%= candidate.first_name %></td>
         <td><%= candidate.last_name %></td>
         <td><%=candidate.get_upvotes.size%></td>
+         <td><%= link_to "Remove Candidate",delete_ballot_candidate_path(candidate_id: candidate.id,ballot_id: @ballot.id),data: {turbo_method: :delete} %>
+            <%= link_to "Edit Candidate",edit_ballot_candidate_path(ballot_id: @ballot.id,candidate_id:candidate.id) %>
+
+         </td>
         </tr>
     <% end %>
   </tbody>

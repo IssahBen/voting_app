@@ -34,6 +34,23 @@ class CandidatesController <  ApplicationController
         end
 
     end
+    
+    def edit 
+        
+        @ballot = Ballot.find(params[:ballot_id])
+        @candidate = Candidate.find(params[:candidate_id])
+    end
+
+    def update 
+        ballot = Ballot.find(params[:ballot_id])
+        @candidate = Candidate.find(params.require(:candidate).permit(:candidate_id)[:candidate_id])
+        if @candidate.update(params.require(:candidate).permit(:first_name,:last_name))
+            flash[:notice]="Candidate updated successfully"
+            redirect_to ballot  
+        else
+            render :edit ,status: :unprocessable_entity
+        end
+    end
 
     private 
      def set_candidate 

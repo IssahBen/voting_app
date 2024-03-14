@@ -20,7 +20,7 @@ class BallotsController < ApplicationController
     end 
 
     def edit 
-
+        @ballot = Ballot.find(params[:id])
     end 
 
     def show 
@@ -29,7 +29,14 @@ class BallotsController < ApplicationController
     end
 
     def update 
-
+        
+        @ballot = Ballot.find(params[:id])
+        if @ballot.update(params.require(:ballot).permit(:name,:description))
+            flash[:notice]="Ballot updated successfully"
+            redirect_to @ballot  
+        else
+            render :edit ,status: :unprocessable_entity
+        end
     end
 
     def destroy 

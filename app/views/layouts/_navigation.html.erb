@@ -11,7 +11,7 @@
             <% if current_user.admin?%>
                <%= link_to "Create Ballot", new_ballot_path,class: "btn btn-xs btn-light" %>
                <%= link_to "Ballots", ballots_path,class: "btn btn-xs btn-light" %>
-               <%= link_to "Edit Ballot", new_ballot_path,class: "btn btn-xs btn-light" %>
+               
             <% end %>
         <% else %>
           <%= link_to "Sign In", new_user_session_path,class: "btn btn-xs btn-light" %>
