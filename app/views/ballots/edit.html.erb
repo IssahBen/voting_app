@@ -3,22 +3,21 @@
     <div class="row ">
             <div class="col-md-6">
 
-
                 <%= form_with model: @ballot, data: {turbo_method: :patch} ,local: true do |f| %>
 
                     <div class="row mb-4">
                                 <div class="col">
                                     <%= f.label :name, class: "form-label" %>
                                     <%= f.text_field :name, class: 'form-control',placeholder: :first_name %>
-                                    
+
                                 </div>
 
                                 <div class="col">
                                     <%= f.label :description ,class: "form-label" %>
                                     <%= f.text_area :description, class: 'form-control',placeholder: :last_name %>
-                                    
+
                                 </div>
-                                
+
                     </div>
 
                     <div class= "form-group  text-center ">

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   acts_as_voter
   has_many :ballots
@@ -7,21 +9,19 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def already_voted 
-    candidates = Candidate.all 
+  def already_voted
+    candidates = Candidate.all
     candidates.each do |candidate|
-      if self.voted_for? candidate 
-        return true  
-      end 
-    end 
+      return true if voted_for? candidate
+    end
     false
   end
 
   def voter?
-    self.role == "Voter"
-  end 
-  
+    role == 'Voter'
+  end
+
   def admin?
-    self.role == "Election Official"
+    role == 'Election Official'
   end
 end

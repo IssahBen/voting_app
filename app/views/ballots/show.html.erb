@@ -13,12 +13,12 @@
     </tr>
   </thead>
   <tbody>
-    <% @candidates.each_with_index do |candidate|%>
+    <% @candidates.each_with_index do |candidate| %>
         <tr>
         <th scope="row">1</th>
         <td><%= candidate.first_name %></td>
         <td><%= candidate.last_name %></td>
-        <td><%=candidate.get_upvotes.size%></td>
+        <td><%= candidate.get_upvotes.size %></td>
          <td><%= link_to "Remove Candidate",delete_ballot_candidate_path(candidate_id: candidate.id,ballot_id: @ballot.id),data: {turbo_method: :delete} %>
             <%= link_to "Edit Candidate",edit_ballot_candidate_path(ballot_id: @ballot.id,candidate_id:candidate.id) %>
 

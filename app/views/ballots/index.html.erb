@@ -1,11 +1,11 @@
-<% @ballots.each do |ballot|%> 
+<% @ballots.each do |ballot| %>
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title"><%= ballot.name %></h5>
             <p class="card-text"><%= ballot.description %></p>
-            <%= link_to "View Ballot",ballot_path(ballot),class: "card-link"%>
+            <%= link_to "View Ballot",ballot_path(ballot),class: "card-link" %>
             <%= link_to "Edit Ballot", edit_ballot_path(ballot),class: "card-link" %>
             <%= link_to "delete Ballot", ballot_path(ballot),class: "card-link",data: {turbo_method: :delete} %>
         </div>
     </div>
-<% end%>
+<% end %>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBallotCandidates < ActiveRecord::Migration[7.1]
   def change
     create_table :ballot_candidates do |t|

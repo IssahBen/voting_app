@@ -1,0 +1,18 @@
+EnableDefaultLinters: true 
+glob: "app/views/**/*.{html}{+*,}.erb" 
+linters: 
+  SpaceInHtmlTag: 
+    enabled: false 
+  ErbSafety: 
+    enabled: true 
+  RequireInputAutocomplete:
+    enabled: false 
+  Rubocop: 
+    enabled: true
+    rubocop_config: 
+      Layout/IndentationStyle:
+        Enabled: true
+        EnforcedStyle: spaces 
+        IndentationWidth: 2 
+    only: 
+      - Layout/IndentationStyle
