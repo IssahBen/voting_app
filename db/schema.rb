@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_14_003436) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_14_062731) do
+  create_table "ballot_candidates", force: :cascade do |t|
+    t.integer "ballot_id", null: false
+    t.integer "candidate_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ballot_id"], name: "index_ballot_candidates_on_ballot_id"
+    t.index ["candidate_id"], name: "index_ballot_candidates_on_candidate_id"
+  end
+
+  create_table "ballots", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "candidates", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -34,6 +50,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_14_003436) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role", default: "Voter"
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -54,4 +72,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_14_003436) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter"
   end
 
+  add_foreign_key "ballot_candidates", "ballots"
+  add_foreign_key "ballot_candidates", "candidates"
 end

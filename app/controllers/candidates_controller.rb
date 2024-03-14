@@ -16,6 +16,25 @@ class CandidatesController <  ApplicationController
         end
     end 
 
+    def new 
+       @ballot = Ballot.find(params[:ballot_id])
+    end
+
+    def create 
+       @ballot = Ballot.find(params[:ballot_id])
+       @candidate = Candidate.new(first_name: params[:first_name],last_name: params[:last_name])
+       if @candidate.save 
+            @ballot.ballot_candidates.build(candidate_id: @candidate.id) 
+            @ballot.save 
+                flash[:notice] = "Candidate has been added to ballot"
+                redirect_to @ballot   
+        else 
+            flash.now[:alert] = "Candidate couldn't be added"
+            render "new", status: :unprocessable_entity
+        end
+
+    end
+
     private 
      def set_candidate 
         @candidate = Candidate.find(params[:candidate_id])
