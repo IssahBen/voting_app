@@ -6,7 +6,7 @@ class PassingthroughController < ApplicationController
            when 'Voter'
              voter_home_path
            when 'Election Official'
-             admin_home_path
+             ballots_path
            end
 
     redirect_to path

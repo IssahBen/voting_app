@@ -2,11 +2,13 @@
 
 class BallotsController < ApplicationController
   def index
+    session[:ballot_id] = nil
     @ballots  = current_user.ballots
   end
 
   def show
     @ballot = Ballot.find(params[:id])
+    session[:ballot_id] = @ballot.id
     @candidates = @ballot.candidates
   end
 

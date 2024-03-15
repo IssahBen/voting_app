@@ -4,6 +4,7 @@ class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:upvote]
 
   def index
+    session[:ballot_id] = nil
     @candidates = current_user.candidates
     #  Candidate.all.order(:cached_scoped_subscribe_votes_up=> :desc)
   end
@@ -28,19 +29,23 @@ class CandidatesController < ApplicationController
   end
 
   def create
-    byebug
     @ballot = Ballot.find(params[:ballot_id])
     if params[:user_id]
-      @candidate = Candidate.new(first_name: params[:first_name], last_name: params[:last_name],
-                                 user_id: params[:user_id])
-      if @candidate.save
-        @ballot.ballot_candidates.build(candidate_id: @candidate.id)
-        @ballot.save
-        flash[:notice] = 'Candidate has been added to ballot'
+      unless current_user.candidate_in_db?(params[:first_name],params[:last_name])
+        @candidate = Candidate.new(first_name: params[:first_name], last_name: params[:last_name],
+                                  user_id: params[:user_id])
+        if @candidate.save
+          @ballot.ballot_candidates.build(candidate_id: @candidate.id)
+          @ballot.save
+          flash[:notice] = 'Candidate has been added to ballot'
+          redirect_to @ballot
+        else
+          flash.now[:alert] = "Candidate couldn't be added"
+          redirect_to @ballot
+        end
+      else 
+        flash[:alert] = "Candidate already Added"
         redirect_to @ballot
-      else
-        flash.now[:alert] = "Candidate couldn't be added"
-        render 'new', status: :unprocessable_entity
       end
     else
       @candidate = Candidate.find(params[:candidate_id])
