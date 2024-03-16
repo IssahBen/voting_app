@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th scope="col">#</th>
+      <td scope="col">Photo</td>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Votes</th>
@@ -13,9 +14,15 @@
     </tr>
   </thead>
   <tbody>
-    <% @candidates.each_with_index do |candidate| %>
+    <% @candidates.each_with_index do |candidate,i| %>
         <tr>
-        <th scope="row">1</th>
+        <th scope="row"><%= i+1 %></th>
+        <td><% if candidate.image.attached?%>
+                                <%= image_tag candidate.image,size: "100x100" %>
+              <% else %>
+                                <%= image_tag "defaultprofile.jpeg",size: "100x100"%>
+              <% end %>
+        </td>
         <td><%= candidate.first_name %></td>
         <td><%= candidate.last_name %></td>
         <td><%= candidate.get_upvotes.size %></td>

@@ -12,6 +12,4 @@ class ApplicationController < ActionController::Base
   def current_ballot
     @current_ballot ||= Ballot.find(session[:ballot_id]) if session[:ballot_id]
   end
-
-
 end

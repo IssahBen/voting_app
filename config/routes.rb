@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     resources :candidates, only: %i[create new edit update]
   end
 
-  resources :candidates, only: [:index,:destroy]
+  resources :candidates, only: %i[index destroy]
   delete 'delete_ballot_candidate', to: 'ballot_candidate#destroy'
 end

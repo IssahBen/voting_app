@@ -2,19 +2,18 @@
 
 class Candidate < ApplicationRecord
   has_one_attached :image do |attachable|
-    attachable.variant :thumb, resize_to_limit: [100, 100],preprocessed: true
+    attachable.variant :thumb, resize_to_limit: [100, 100], preprocessed: true
   end
-  validates :first_name,presence: true
-  validates :last_name,presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :image, allow_blank: true, format: {
-  with: %r{\.gif|jpg|png|jpeg|}i,
-  message: 'must be a url for gif, jpg, jpeg or png image.'
-}
+    with: /\.gif|jpg|png|jpeg|/i,
+    message: 'must be a url for gif, jpg, jpeg or png image.'
+  }
 
-
-  # before_save do 
+  # before_save do
   #    self.first_name = first_name.capitalize
-  #    self.last_name = last_name.capitalize 
+  #    self.last_name = last_name.capitalize
   # end
   acts_as_votable
   belongs_to :user
@@ -23,7 +22,8 @@ class Candidate < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
   def on_ballot?
-    !self.ballots.empty?
+    !ballots.empty?
   end
 end

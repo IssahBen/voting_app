@@ -25,13 +25,10 @@ class User < ApplicationRecord
     role == 'Election Official'
   end
 
-  def candidate_in_db?(first_name,last_name)
+  def candidate_in_db?(first_name, last_name)
     candidates.each do |candidate|
-      if candidate.first_name ==first_name && candidate.last_name == last_name 
-        return true  
-      end 
-    end 
-    false 
-     
-  end 
+      return true if candidate.first_name == first_name && candidate.last_name == last_name
+    end
+    false
+  end
 end
