@@ -6,18 +6,34 @@
                 <th scope="col">#</th>
                 <th scope="col">Full Name</th>
                 <th scope="col">Ballots</th>
+                <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <% object.each_with_index do |candidate,i| %>
                     <tr>
                     <th scope="row"><%= i + 1 %></th>
-                    <td><%= candidate.full_name %></td>
+                    <td><% if candidate.image.attached?%>
+                                <%= image_tag candidate.image,size: "100x100" %>
+                        <% end %>
+                        <%= candidate.full_name %>
+                    </td>
                     <td>
                            <button type="button" class="btn btn-info" aria-label="Left Align">
-                                <span class="badge"><% candidate.ballots.each do |ballot| %>
-                                                    <%= ballot.name %>
+                                <span class="badge"><% unless candidate.ballots.empty? %>
+                                                        <% candidate.ballots.each do |ballot| %>
+                                                        <%= ballot.name %>
+                                                        <% end %>
+                                                    <% else %>
+                                                        Not on a Ballot 
                                                     <% end %>
+                                </span>
+                            </button>
+                    </td>
+                    <td>
+                            <button type="button" class="btn btn-info" aria-label="Left Align">
+                                <span class="badge">
+                                                     <%= link_to "Delete Candidate",candidate_path(candidate),data: {turbo_method: :delete} %>
                                 </span>
                             </button>
                     </td>

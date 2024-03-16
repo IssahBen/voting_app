@@ -1,7 +1,7 @@
+
 <div class="container">
 
-    <div class="row ">
-            <div class="col-md-6">
+                <%= render 'shared/errors', object: @candidate%>
 
                 <%= form_with url: ballot_candidates_path(@ballot),data: {turbo_method: :post} ,local: true do |f| %>
 
@@ -16,6 +16,12 @@
                                     <%= f.label :last_name ,class: "form-label" %>
                                     <%= f.text_field :last_name, class: 'form-control',placeholder: :last_name %>
                                      <%= f.hidden_field :user_id, :value => current_user.id %>
+                                   
+
+                                </div>
+                                <div class="col">
+                                    <%= f.label :Candidate_Image ,class: "form-label" %>
+                                     <%= f.file_field :image %>
                                 </div>
 
                     </div>
@@ -41,7 +47,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% @user_candidates.each_with_index do |candidate,i| %>
+                <% current_user.candidates.each_with_index do |candidate,i| %>
                     <tr>
                     <th scope="row"><%= i + 1 %></th>
                     <td><%= candidate.full_name %></td>
