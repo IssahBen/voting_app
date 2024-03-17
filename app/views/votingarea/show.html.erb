@@ -1,5 +1,14 @@
 <h1 class= "text-center"><%= current_ballot.name%></h1>
 <h2 class="text-center"><%= current_ballot.description%></h2>
+<h3 class="text-center"><% if @winner.get_upvotes.size == 0%>
+                                No Registered Votes 
+                            <% else%>
+                                Current Winner:<%= @winner.full_name %>,Number of Votes:<%= @winner.get_upvotes.size %>
+                            <% end%>
+
+                        
+
+                        </h3>
 <table class="table">
   <thead>
     <tr>

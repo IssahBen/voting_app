@@ -1,7 +1,17 @@
 <h2>Add candidates to Ballot</h2>
 
 <%= link_to "Add Candidate",new_ballot_candidate_path(@ballot) %>
+<h3 class="text-center"><% if @winner.nil?%>
+                                 
+                            <% elsif @winner.get_upvotes.size == 0 %>
+                                No Registered Votes
+                            <% else %>
+                                Current Winner:<%= @winner.full_name %>,Number of Votes:<%= @winner.get_upvotes.size %>
+                            <% end%>
 
+                        
+
+                        </h3>
 <table class="table">
   <thead>
     <tr>
