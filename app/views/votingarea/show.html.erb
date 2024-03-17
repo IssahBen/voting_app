@@ -22,7 +22,7 @@
   <tbody>
     <% @candidates.each_with_index do |candidate,i| %>
         <tr>
-        <th scope="row"><%= i %></th>
+        <th scope="row"><%= i+1 %></th>
         <td><%= candidate.first_name %></td>
         <td><%= candidate.last_name %></td>
         <td>

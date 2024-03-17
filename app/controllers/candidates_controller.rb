@@ -2,6 +2,7 @@
 
 class CandidatesController < ApplicationController
   before_action :set_candidate, only: [:upvote]
+  before_action :user_not_admin
 
   def index
     session[:ballot_id] = nil
@@ -10,7 +11,6 @@ class CandidatesController < ApplicationController
   end
 
   def upvote
-    byebug
     if current_user.already_voted
       flash[:alert] = 'You already voted '
     else

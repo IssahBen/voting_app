@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class BallotCandidateController < ApplicationController
+  before_action :user_not_admin
   def destroy
     ballot = Ballot.find(params[:ballot_id])
     candidate = Candidate.find(params[:candidate_id])

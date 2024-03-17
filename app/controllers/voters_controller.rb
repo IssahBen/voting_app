@@ -1,4 +1,5 @@
 class VotersController < ApplicationController
+    before_action :user_not_admin
   def index
     @voters = current_ballot.voters
   end
