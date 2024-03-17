@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   put 'vote', to: 'candidates#upvote'
   get 'user_root' => 'passingthrough#index'
   get 'voter_home', to: 'pages#voter_home'
-  get "voting_area", to: "votingarea#show"
+  get 'voting_area', to: 'votingarea#show'
   resources :ballots do
     resources :candidates, only: %i[create new edit update]
   end
