@@ -10,12 +10,13 @@ class CandidatesController < ApplicationController
   end
 
   def upvote
+    byebug
     if current_user.already_voted
       flash[:alert] = 'You already voted '
     else
       @candidate.upvote_from current_user
     end
-    redirect_to poll_path
+    redirect_to voting_area_path(ballot_id: current_ballot.id)
   end
 
   def new

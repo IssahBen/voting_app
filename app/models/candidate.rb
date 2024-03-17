@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class Candidate < ApplicationRecord
+  before_save do
+      self.first_name = first_name.capitalize
+      self.last_name = last_name.capitalize
+    end
+
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [100, 100], preprocessed: true
   end
@@ -11,10 +16,7 @@ class Candidate < ApplicationRecord
     message: 'must be a url for gif, jpg, jpeg or png image.'
   }
 
-  # before_save do
-  #    self.first_name = first_name.capitalize
-  #    self.last_name = last_name.capitalize
-  # end
+  
   acts_as_votable
   belongs_to :user
   has_many :ballot_candidates

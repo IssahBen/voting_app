@@ -1,0 +1,35 @@
+<h1 class= "text-center"><%= current_ballot.name%></h1>
+<h2 class="text-center"><%= current_ballot.description%></h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Image</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @candidates.each_with_index do |candidate,i| %>
+        <tr>
+        <th scope="row"><%= i %></th>
+        <td><%= candidate.first_name %></td>
+        <td><%= candidate.last_name %></td>
+        <td>
+                <% if candidate.image.attached?%>
+                                    <%= image_tag candidate.image,size: "100x100" %>
+                            <% end %>
+        </td>
+        <td>
+            <%= link_to vote_path(candidate_id: candidate.id),method: :put do%>
+                <button type="buttton" class="btn btn-info" aria-label="left-align">
+                    <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center" aria-hidden='true'>Vote</span>
+                    <span class="badge"><%= candidate.get_upvotes.size %></span>
+                </button> 
+            <% end %> 
+        </td>
+    </tr>
+     <% end %>
+  </tbody>
+</table>

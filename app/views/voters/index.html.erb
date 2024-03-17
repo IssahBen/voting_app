@@ -1,0 +1,25 @@
+<%= link_to "Add Voter",new_voter_path %>
+<table class="table table-dark table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name </th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @voters.each_with_index do |voter,i| %>
+        <tr>
+        <td scope="row"><%= i+1 %></td>
+        <td><%= voter.first_name %></td>
+        <td><%= voter.last_name %></td>
+        <td><%= voter.email %></td>
+        <td><%= link_to "Remove Voter",voter_path(voter),data: {turbo_method: :delete} %>
+            <%= link_to "edit Voter",edit_voter_path(voter) %>
+        </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

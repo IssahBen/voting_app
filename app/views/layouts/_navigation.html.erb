@@ -12,7 +12,10 @@
                <%= link_to "Create Ballot", new_ballot_path,class: "btn btn-xs btn-light" %>
                <%= link_to "Ballots", ballots_path,class: "btn btn-xs btn-light" %>
                 <%= link_to "All Candidates", candidates_path,class: "btn btn-xs btn-light" %>
+                 
+
                 <% if current_ballot %>
+                  <%= link_to "Voter Record", voters_path,class: "btn btn-xs btn-light" %>
                   <%= link_to "#{current_ballot.name}", ballot_path(current_ballot),class: "btn btn-xs btn-light" %>
                 <% end %>
             <% end %>
