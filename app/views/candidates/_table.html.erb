@@ -13,7 +13,7 @@
                 <% object.each_with_index do |candidate,i| %>
                     <tr>
                     <th scope="row"><%= i + 1 %></th>
-                    <td><% if candidate.image.attached?%>
+                    <td><% if candidate.image.attached? %>
                                 <%= image_tag candidate.image,size: "100x100" %>
                         <% end %>
                         <%= candidate.full_name %>
@@ -25,7 +25,7 @@
                                                         <%= ballot.name %>
                                                         <% end %>
                                                     <% else %>
-                                                        Not on a Ballot 
+                                                        Not on a Ballot
                                                     <% end %>
                                 </span>
                             </button>

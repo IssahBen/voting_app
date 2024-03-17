@@ -1,7 +1,7 @@
 
 <div class="container">
 
-                <%= render 'shared/errors', object: @candidate%>
+                <%= render 'shared/errors', object: @candidate %>
 
                 <%= form_with url: ballot_candidates_path(@ballot),data: {turbo_method: :post} ,local: true do |f| %>
 
@@ -16,7 +16,6 @@
                                     <%= f.label :last_name ,class: "form-label" %>
                                     <%= f.text_field :last_name, class: 'form-control',placeholder: :last_name %>
                                      <%= f.hidden_field :user_id, :value => current_user.id %>
-                                   
 
                                 </div>
                                 <div class="col">

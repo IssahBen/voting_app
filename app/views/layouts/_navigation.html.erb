@@ -7,12 +7,11 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <% if user_signed_in? %>
-           
+
             <% if current_user.admin? %>
                <%= link_to "Create Ballot", new_ballot_path,class: "btn btn-xs btn-light" %>
                <%= link_to "Ballots", ballots_path,class: "btn btn-xs btn-light" %>
                 <%= link_to "All Candidates", candidates_path,class: "btn btn-xs btn-light" %>
-                 
 
                 <% if current_ballot %>
                   <%= link_to "Voter Record", voters_path,class: "btn btn-xs btn-light" %>

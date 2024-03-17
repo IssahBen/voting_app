@@ -1,15 +1,13 @@
 <h2>Add candidates to Ballot</h2>
 
 <%= link_to "Add Candidate",new_ballot_candidate_path(@ballot) %>
-<h3 class="text-center"><% if @winner.nil?%>
-                                 
+<h3 class="text-center"><% if @winner.nil? %>
+
                             <% elsif @winner.get_upvotes.size == 0 %>
                                 No Registered Votes
                             <% else %>
                                 Current Winner:<%= @winner.full_name %>,Number of Votes:<%= @winner.get_upvotes.size %>
-                            <% end%>
-
-                        
+                            <% end %>
 
                         </h3>
 <table class="table">
@@ -27,10 +25,10 @@
     <% @candidates.each_with_index do |candidate,i| %>
         <tr>
         <th scope="row"><%= i+1 %></th>
-        <td><% if candidate.image.attached?%>
+        <td><% if candidate.image.attached? %>
                                 <%= image_tag candidate.image,size: "100x100" %>
               <% else %>
-                                <%= image_tag "defaultprofile.jpeg",size: "100x100"%>
+                                <%= image_tag "defaultprofile.jpeg",size: "100x100" %>
               <% end %>
         </td>
         <td><%= candidate.first_name %></td>
