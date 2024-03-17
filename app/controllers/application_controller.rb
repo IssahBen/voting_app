@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
     @current_ballot ||= Ballot.find(session[:ballot_id]) if session[:ballot_id]
   end
 
-  def user_not_admin 
-    unless current_user.admin?
-      flash[:alert] = "Not Authorized"
-      redirect_to root_path
-    end 
-  end 
+  def user_not_admin
+    return if current_user.admin?
+
+    flash[:alert] = 'Not Authorized'
+    redirect_to root_path
+  end
 end

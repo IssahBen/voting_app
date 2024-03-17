@@ -6,7 +6,7 @@ class PassingthroughController < ApplicationController
     if current_user.role == 'Voter'
       ballot_id = check_eligibility(current_user)
       if ballot_id
-        path = voting_area_path(ballot_id: ballot_id)
+        path = voting_area_path(ballot_id:)
       else
         flash[:notice] = 'You are not a registered voter'
         current_user.destroy

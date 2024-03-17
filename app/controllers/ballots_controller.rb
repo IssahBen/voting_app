@@ -54,16 +54,14 @@ class BallotsController < ApplicationController
   def ballot_params
     params.require(:ballot).permit(:name, :description, :user_id)
   end
+
   def with_most_votes(candidates)
-    if candidates.empty?
-      return nil 
-    end
+    return nil if candidates.empty?
+
     winning_number_of_votes = 0
-    candidates.each do |candidate| 
-        if candidate.get_upvotes.size > winning_number_of_votes 
-            winning_number_of_votes = candidate.get_upvotes.size 
-        end 
-    end 
-    candidates.find{|candidate| candidate.get_upvotes.size == winning_number_of_votes}
-end
+    candidates.each do |candidate|
+      winning_number_of_votes = candidate.get_upvotes.size if candidate.get_upvotes.size > winning_number_of_votes
+    end
+    candidates.find { |candidate| candidate.get_upvotes.size == winning_number_of_votes }
+  end
 end
