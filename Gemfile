@@ -79,3 +79,5 @@ gem "sassc-rails"
 gem "devise-bootstrap5"
 
 gem 'acts_as_votable'
+
+gem 'faraday', '~> 2.7', '>= 2.7.11'

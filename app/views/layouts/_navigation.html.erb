@@ -27,6 +27,10 @@
           <%= link_to "Sign In", new_user_session_path,class: "btn btn-dark" %>
           <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-dark" %>
         <% end %>
+        <% if !user_signed_in? %>
+         <%= link_to "Check if you Registered", verification_page_path, class: "btn btn-dark" %>
+        <% end %>
+
 
       </div>
     </div>

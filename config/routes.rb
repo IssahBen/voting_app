@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'pages#home'
+  get "verification_page" ,to: "pages#verification"
   put 'vote', to: 'candidates#upvote'
   get 'user_root' => 'passingthrough#index'
   get 'voter_home', to: 'pages#voter_home'
@@ -14,4 +15,16 @@ Rails.application.routes.draw do
 
   resources :candidates, only: %i[index destroy]
   delete 'delete_ballot_candidate', to: 'ballot_candidate#destroy'
+
+  namespace :api do  
+    namespace :v1 do 
+      resources :voters, only: [:index]
+    end
+
+    namespace :v2 do 
+      resources :voters, only: [:index]
+    end 
+  end
+
+   put "verify", to: "verification#verify"
 end

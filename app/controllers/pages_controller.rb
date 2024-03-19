@@ -5,4 +5,7 @@ class PagesController < ApplicationController
   def home; end
 
   def voter_home; end
+
+  def verification 
+  end
 end

@@ -1,0 +1,47 @@
+
+<h1 class="text-center text-danger">Check If you're a Registered Voter </h1>
+<div class = "container">
+
+    <div class = "row justify-content-center">
+            <div class=" col-10">
+
+                <%= form_with scope: :verification,url:verify_path,class:" login-form" ,method: :put,local: true  do |form| %>
+
+                <div class = "form-group row">
+                    <%= form.label :email ,class: "col-2 col-form-label text-light" %>
+
+                    <div class= "col-10">
+
+                        <%= form.email_field :email , class: "form-control rounded" ,placeholder:"Enter email adress" %>
+
+                    </div>
+                </div>
+                    <div class = "form-group row">
+                    <%= form.label :first_name ,class: "col-2 col-form-label text-light" %>
+
+                    <div class= "col-10">
+
+                        <%= form.text_field :first_name , class: "form-control rounded" ,placeholder:"First Name" %>
+
+                    </div>
+                </div>
+                   <div class = "form-group row">
+                    <%= form.label :last_name ,class: "col-2 col-form-label text-light" %>
+
+                    <div class= "col-10">
+
+                        <%= form.text_field :last_name , class: "form-control rounded" ,placeholder:"last Name " %>
+
+                    </div>
+                </div>
+                
+                <div class = "form-group  text-center ">
+                    <%= form.submit "Log In", class: "btn btn-success btn-lg" %>
+                </div>
+
+                <% end %>
+            </div>
+
+    </div>
+
+</div>

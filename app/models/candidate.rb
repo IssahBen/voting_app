@@ -27,4 +27,6 @@ class Candidate < ApplicationRecord
   def on_ballot?
     !ballots.empty?
   end
+
+  
 end

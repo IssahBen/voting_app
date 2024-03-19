@@ -134,6 +134,10 @@ GEM
       smart_properties
     erubi (1.12.0)
     execjs (2.9.1)
+    faraday (2.9.0)
+      faraday-net_http (>= 2.0, < 3.2)
+    faraday-net_http (3.1.0)
+      net-http
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -166,6 +170,8 @@ GEM
     minitest (5.22.2)
     msgpack (1.7.2)
     mutex_m (0.2.0)
+    net-http (0.4.1)
+      uri
     net-imap (0.4.10)
       date
       net-protocol
@@ -312,6 +318,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    uri (0.13.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -347,6 +354,7 @@ DEPENDENCIES
   devise-bootstrap5
   devise-i18n
   erb_lint
+  faraday (~> 2.7, >= 2.7.11)
   importmap-rails
   jbuilder
   puma (>= 5.0)
