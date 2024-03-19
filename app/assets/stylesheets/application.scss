@@ -15,10 +15,73 @@
  */
 @import "bootstrap";
 
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
 body {
-    background-image: asset_url("wevotenow.jpg")
+    background-image: asset_url("try3.jpg");
+    position: relative;
+    min-height: 100vh;
 }
 
 .jumbotron {
-    opacity: 0.8;
+    opacity: 0.9;
+    height: 100px;
+    position: absolute;
+    top: 50;
+    width: 100%;
+    color: black;
+}
+
+.summary {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+
+.main-ballot-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    height: 100vh;
+}
+
+.ballots-container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background-color: black;
+    width: auto;
+    height: 50vh;
+    border-radius: 10px;
+    overflow: scroll;
+}
+
+.card {
+    height: 20vh;
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    color: black;
+}
+
+.ballots-header {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: red;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Footer height */
+}
+
+.listing {
+    overflow: scroll;
+    height: 50vh;
 }
