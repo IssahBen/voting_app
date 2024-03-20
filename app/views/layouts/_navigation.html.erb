@@ -14,13 +14,15 @@
                 <%= link_to "All Candidates", candidates_path,class: "btn btn-dark" %>
                 <%= link_to "logout",destroy_user_session_path,data: {turbo_method: :delete} ,class:"btn btn-dark" %>
                 <% if current_ballot %>
-                  <%= link_to "Voter Record", voters_path,class: "btn btn-xs btn-light" %>
+                  <%= link_to "Voter Record", voters_path(ballot_id: current_ballot.id),class: "btn btn-xs btn-light" %>
                   <%= link_to "#{current_ballot.name}", ballot_path(current_ballot),class: "btn btn-dark" %>
 
                 <% end %>
               
             <% else %>
              <%= link_to "Voting Area", voting_area_path(ballot_id: current_ballot.id),class: "btn btn-dark" %>
+             <%= link_to "logout",destroy_user_session_path,data: {turbo_method: :delete} ,class:"btn btn-dark" %>
+
             <% end %>
         <% else %>
         

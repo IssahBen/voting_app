@@ -5,3 +5,55 @@
 .container {
     color: white;
 }
+
+.ballot_table {
+    position: relative;
+    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    padding: 20px;
+    padding-right: 50px;
+    border-radius: 30px;
+    overflow: scroll;
+    z-index: 1;
+}
+
+.ballot-page-header {
+    margin-left: 100px;
+    padding: 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-decoration: underline;
+}
+
+footer {
+    opacity: 0.5;
+}
+
+.text1 {
+    color: brown;
+}
+
+.text {
+    color: black;
+}
+
+img {
+    border-radius: 20px;
+}
+
+.admin_b_show {
+    color: brown;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.candidates_show {
+    color: Black;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.edit-header {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black
+}

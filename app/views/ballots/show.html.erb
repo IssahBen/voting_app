@@ -1,7 +1,7 @@
-<h2>Add candidates to Ballot</h2>
+<h2 class ="admin_b_show text-center">Add candidates to Ballot</h2>
 
-<%= link_to "Add Candidate",new_ballot_candidate_path(@ballot) %>
-<h3 class="text-center"><% if @winner.nil? %>
+<%= link_to "Add Candidate",new_ballot_candidate_path(@ballot),class: " text-center btn btn-warning"  %>
+<h3 class="admin_b_show text-center"><% if @winner.nil? %>
 
                             <% elsif @winner.get_upvotes.size == 0 %>
                                 No Registered Votes
