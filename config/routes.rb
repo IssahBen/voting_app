@@ -27,4 +27,6 @@ Rails.application.routes.draw do
   end
 
    put "verify", to: "verification#verify"
+
+   resource :upload,only: [:create,:show]
 end

@@ -3,7 +3,6 @@
 class BallotsController < ApplicationController
   before_action :user_not_admin
   def index
-   
     @ballots  = current_user.ballots
   end
 

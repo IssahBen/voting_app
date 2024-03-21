@@ -1,0 +1,7 @@
+<h1 class = "edit-header text-center">Add Voters On a Csv File </h1>  
+            <div class = 'text-center'>
+            <%= form_with(url: '/upload', multipart: true) do |form| %>
+            <%= form.file_field :csv_file,class: " filefield form-control" %>
+            <%= form.submit "Upload CSV",class: "btn btn-warning" %>
+            <% end %>
+        </div>

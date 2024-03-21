@@ -1,6 +1,6 @@
 class Voter < ApplicationRecord
   belongs_to :user
-  has_many :ballot_voters
+  has_many :ballot_voters,dependent: :destroy
   has_many :ballots, through: :ballot_voters
   before_save { self.email = email.downcase }
 
@@ -9,8 +9,8 @@ class Voter < ApplicationRecord
     self.last_name = last_name.capitalize
   end
 
-  validates :first_name, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 25 }
-  validates :last_name, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 25 }
+  validates :first_name, presence: true, length: { minimum: 3, maximum: 25 }
+  validates :last_name, presence: true, length: { minimum: 3, maximum: 25 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

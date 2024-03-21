@@ -29,7 +29,8 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.find(params[:candidate_id])
   end
 
-  def create
+  def create 
+    byebug
     @ballot = Ballot.find(params[:ballot_id])
     if params[:user_id]
       if current_user.candidate_in_db?(params[:first_name], params[:last_name])
